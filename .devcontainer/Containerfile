@@ -1,0 +1,20 @@
+FROM vscode/devcontainers/base:0-bullseye AS devcontainer
+
+SHELL ["/bin/bash"]
+WORKDIR /workspaces
+# hadolint ignore=DL3008
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get upgrade -y \
+    && apt-get -y install --no-install-recommends git bash-completion \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* 
+
+# Apt repositories seem way behind on Hugo V0.80.x
+#   and the file name doesn't work with Hubapp :/
+RUN curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest \
+  | grep  browser_download_url \
+  | grep Linux-64bit.deb \
+  | grep extended \
+  | cut -d '"' -f 4 \
+  | xargs curl -sLO \
+  && dpkg -i hugo*_Linux-64bit.deb \
+  && rm --force hugo*_Linux-64bit.deb

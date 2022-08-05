@@ -1,0 +1,30 @@
+baseURL = 'http://ariel.richtman.silverrail.io/devcontainer-presentation'
+languageCode = 'en-us'
+title = 'DevContainers and you'
+theme = 'reveal-hugo'
+# use highlight.js instead of Hugo for synax highlight
+codeFences = false
+disableKinds = ["sitemap", "RSS"]
+
+
+[outputFormats.Reveal]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
+
+# currently only the unsafe mode for goldmark is supported
+[markup.goldmark.renderer]
+unsafe = true
+
+
+[params.reveal_hugo]
+# See https://revealjs.com/themes/ and https://revealjs.com/config/
+# Add snake case all lower to pass to reveal.js
+theme = "solarized"
+controls = false
+history = false
+slide_number = false
+transition = 'slide'
+transition_speed = 'fast'
+# See https://highlightjs.org/static/demo/
+highlight_theme = 'monokai'

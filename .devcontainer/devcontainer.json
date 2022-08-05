@@ -1,0 +1,17 @@
+
+{
+	"name": "DevContainer presentation",
+	"build": {
+		"dockerfile": "Containerfile"
+		,"context": ".."
+	},
+	"mounts": [
+		// here we mount some user configuration and auth directories to interact with other systems
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+	],
+	"extensions": [
+		"yzhang.markdown-all-in-one"
+		,"ms-azuretools.vscode-docker"
+		,"bungcip.better-toml"
+	]
+}
