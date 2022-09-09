@@ -13,5 +13,6 @@
 		"yzhang.markdown-all-in-one"
 		,"ms-azuretools.vscode-docker"
 		,"bungcip.better-toml"
+		,"davidanson.vscode-markdownlint"
 	]
 }

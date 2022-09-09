@@ -1,4 +1,4 @@
-baseURL = 'http://ariel.richtman.silverrail.io/devcontainer-presentation'
+baseURL = 'https://brisbane-office.pages-bne.silverrail.io/labs/demos/devcontainers/'
 languageCode = 'en-us'
 title = 'DevContainers and you'
 theme = 'reveal-hugo'
@@ -21,7 +21,7 @@ unsafe = true
 # See https://revealjs.com/themes/ and https://revealjs.com/config/
 # Add snake case all lower to pass to reveal.js
 theme = "solarized"
-controls = false
+controls = true
 history = false
 slide_number = false
 transition = 'slide'

@@ -5,13 +5,13 @@ description = "Presentation on DevContainers"
 weight = 0
 +++
 
-# DevContainers
+{{< slide id="starting-slide" >}}
+
+# DevContainers at SilverRail
 
 ---
 
-{{< slide id="starting-slide" >}}
-
-## Content
+## Structure
 
 1. Introduction
 1. Demo

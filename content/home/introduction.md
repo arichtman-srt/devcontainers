@@ -5,28 +5,79 @@ description = "Introduction section of slides"
 weight = 100
 +++
 
+{{% section %}}
+
 # Introduction
 
-- Whatsamajig?
-- Why me? Wherefore?
+---
+
+## What's the problem?
+
+{{% fragment %}}Dependency hell{{% /fragment %}}
+{{% fragment %}}Repo swapping{{% /fragment %}}
+{{% fragment %}}Polluted local environments{{% /fragment %}}
+{{% fragment %}}Conflicting parallel installs{{% /fragment %}}
+{{% fragment %}}Unreproducable results{{% /fragment %}}
+{{% fragment %}}Late feedback{{% /fragment %}}
+{{% fragment %}}Inconsistent tooling{{% /fragment %}}
+{{% fragment %}}Stale documentation{{% /fragment %}}
 
 {{% note %}}
 
-
-As a community we celebrate individuality, whether it’s your choice of indentation style, yarn vs npm vs pnpm, linting rules, monorepo tools, etc. that’s entirely up to you as an OSS project maintainer, but as an outsider coming in, that’s where it can be a bit more difficult. When someone comes to your repo there’s a process they’ll go through, first they’ll look for and setup instructions in the README file, “what version of Node/dotnet/Python/etc. is required?”, “what package manager(s) are being used?”, “how does one install all the dependencies?”, and so on. Failing that, it’s digging for a contributors guide, whether that’s a CONTRIBUTING.md file, or a page on a wiki, something that’ll help them get started.
-
-All of this starts producing barriers to be able to effectively contribute. Have the wrong version of dotnet and you might not be able to compile. Didn’t realise a linter/formatter was in use can result in a PR failing to meet the code style guide. While dealing with these PR’s as a maintainer is frustrating, it’s equally so for a contributor who has to go back and rework something that they were unaware about to begin with.
-
-Standardising Environments with devcontainers
-
-This is where dev devcontainers come in. A devcontainer is used by the VS Code Remote Containers extension and works by creating a Docker container to do your development in.
-
-As the development environment is within Docker, you supply the Dockerfile and VS Code will take care of building the image and starting the container for you. Then since you control the Dockerfile you can have it install any software you need for your project, set the right version of Node, install global packages, etc.
-
-This is just a plain old Dockerfile, you can run it without VS Code using the standard Docker tools and mount a volume in, but the power comes when you combine it with the devcontainers.json file, which gives VS Code instructions on how to configure itself.
-
-Using eslint + prettier? Tell the devcontainer to install those extensions so the user has them already installed. Want some VS Code settings enabled by default, specify them so users don’t have to know about it.
-
-source: https://www.aaron-powell.com/posts/2021-03-08-your-open-source-project-needs-a-dev-container-heres-why/
+- Dependency hell - solve once and it's done
+- Repo swapping - save time on setup, dive into new projects
+- Polluted local environments - credentials, environment variables, caches, old versions etc
+- Conflicting versions - parallel installations still confusing
+- Unreproducable results - don't know what the environment is precisely so can never replicate or trust
+- Late feedback - apply tooling early, real-time while editing or pre-commit
+- Inconsistent tooling - no more fighting over line endings or formatting rules or linters
+- Stale documentation - avoid having to follow x-years-out-of-date Confluence pages about onboarding, new program versions automatically catered for as we've unified documentation and code
 
 {{% /note %}}
+
+---
+
+## What's the solution?
+
+{{% fragment %}}Devcontainers{{% /fragment %}}
+{{% fragment %}}Container-based solution{{% /fragment %}}
+{{% fragment %}}Options for running{{% /fragment %}}
+{{% fragment %}}Lives in-repo{{% /fragment %}}
+{{% fragment %}}Optional{{% /fragment %}}
+{{% fragment %}}Little to no setup{{% /fragment %}}
+{{% fragment %}}Runtime and manager agnostic{{% /fragment %}}
+{{% fragment %}}Some limitations{{% /fragment %}}
+
+{{% note %}}
+
+- Devcontainers
+- Container-based solution
+  - Isolated
+  - Familiar technology
+  - Can leverage community and developments
+  - Lighter than VMs
+  - More efficient stacking on hardware
+- Options for running - Can run em manually or with VSCode integration
+- Lives in-repo alongside the code - everything in the one place
+- Optional - not disruptive to existing workflows
+- Little to no setup required - minimal system bootstrapping/configuration required, smallest container is one install and one JSON property
+- Runtime and manager agnostic - Works with any container runtime/manager
+  - Podman for easy rootless
+  - Can use other container tools like nerdctl/rancher
+  - Works on Docker desktop and Kubernetes (I believe)- Some limitations:
+  - Assumptions about host system config files
+  - Not as fully featured as Docker naked e.g.: unable to mount secrets at build time
+  - No way to share Dockerfiles as libraries (though can use base images + ONBUILD)
+  - Sharing cache/envs/config between container and host is a mixed bag
+
+Offhand: Actually JSON5 or something, supports trailing commas and comments, can be a pain for linters
+
+{{% /note %}}
+
+{{% /section %}}
+
+---
+
+## Demo/hands on
+
+Alright, I'll bite. Show me.
