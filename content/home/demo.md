@@ -5,13 +5,13 @@ description = "Show using devcontainer and creating"
 weight = 200
 +++
 
-<!-- I tried using the section code here but it broke the fragments entirely, even the longer syntax -->
+<!-- I tried using the section code here but it broke the fragments entirely, even using the longer syntax -->
 
 # Demonstration
 
 ---
 
-## How to use an existing DevContainer
+## Setup to use an existing DevContainer
 
 One-time setup:
 
@@ -39,10 +39,36 @@ Every time procedure:
   - Docker
 
 {{% note %}}
+
 Ubuntu 20.04 is readily available on WSL2, does almost everything satisfactorily, and has broad community support.
 
 Config includes things like Docker and Artifactory credentials, Git config
 Docker sortof - I'm using Podman today but they're interchangable for most things at this stage
+
+Demo:
+
+1. Show the user dir is pretty much empty
+1. Bootstrap instance
+    1. Config/auth files
+    Explain how the bootstrap works, show the install file https://github.com/arichtman/dotfiles/blob/main/run_once_install-packages.sh.tmpl
+
+     ```bash
+     mkdir .local
+     cd .local
+     sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply arichtman
+     ```
+
+1. Show bootstrap has populated the user directory and installed podman `ls -Al; podman --version; which dotnet; which python; which hugo; which pip; which pip3; which ruby; which cucumber`
+1. Open folder seat-map-service
+1. F1 rebuild and reopen in container
+1. Open DevContainer and build `dotnet restore; dotnet build`
+1. Open Ruby repo and show
+
+    ```bash
+    gem list
+    ruby build
+    lefthook run pre-commit
+    ```
 
 {{% /note %}}
 
@@ -77,4 +103,5 @@ Microsoft have produced a large range of container images for this purpose, as w
 You could reference an existing image, local to SilverRail/Artifactory or from the internet, and then just wrap it in a very basic json spec. Alternatively you might clone a repository template for say, dotnet 6 and just get one out the gate for free. Or finally you might simply hit the ol' copy-paste from another repo you've seen.
 
 From scratch is the ultimate in flexibility, it allows you to select build tools and versions expressly and bake in very bespoke configuration and assumptions like repository structure, or module names.
+
 {{% /note %}}
