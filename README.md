@@ -4,6 +4,14 @@ Repository template for DevContainer presentation
 
 ## Viewing
 
+## Development
+
+1. Run the devcontainer
+1. `hugo serve`
+1. Visit the localhost address provided
+
+### Users
+
 Go to the GitLab pages URL and view the presentation.
 
 ## Delivering
